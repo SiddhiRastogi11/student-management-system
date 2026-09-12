@@ -1,0 +1,34 @@
+### Build & Target Files ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### Environment Secrets ###
+.env
+.env.*
+!.env.example
+
+### IntelliJ IDEA & Editors ###
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.vscode/
+
+### Eclipse / STS ###
+.classpath
+.project
+.settings/
+bin/
+
+### Operating System Files ###
+.DS_Store
+Thumbs.db
+desktop.ini
+
+### Logs & Temp Files ###
+*.log
+*.tmp
+*.bak

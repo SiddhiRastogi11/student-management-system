@@ -1,0 +1,47 @@
+{
+  "info": {
+    "_postman_id": "bf59c2b9-d303-45e3-a786-e5f5d3bc9e18",
+    "name": "Student Management System API",
+    "description": "RESTful API collection for the Student Management System project. This collection contains sample requests for testing the live Spring Boot backend deployed on Render.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53652209",
+    "_collection_link": "https://go.postman.co/collection/53652209-bf59c2b9-d303-45e3-a786-e5f5d3bc9e18?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "https://student-management-system-720y.onrender.com/students",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Siddhi Rastogi\",\r\n  \"email\": \"siddhi.test@kiet.edu\",\r\n  \"age\": 21\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://student-management-system-720y.onrender.com/students",
+          "protocol": "https",
+          "host": [
+            "student-management-system-720y",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "students"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
