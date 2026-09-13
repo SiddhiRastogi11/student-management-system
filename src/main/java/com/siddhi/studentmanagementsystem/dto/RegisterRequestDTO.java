@@ -17,7 +17,4 @@ public class RegisterRequestDTO {
 
     @NotBlank(message = "Password is required")
     private String password;
-
-    @NotNull(message = "Role is required (ROLE_USER or ROLE_ADMIN)")
-    private Role role;
 }

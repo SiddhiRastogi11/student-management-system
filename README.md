@@ -1,6 +1,6 @@
 # Student Management System API
 
-A production-ready RESTful backend for managing student records, built with Spring Boot 3, Spring Security 6, and Spring Data JPA, backed by MySQL 8.0, and fully containerized with Docker Compose.
+A production-ready RESTful backend for managing student records, built with Spring Boot 4.0.5, Spring Security 6, and Spring Data JPA, backed by MySQL 8.0, and fully containerized with Docker Compose.
 
 The API implements stateless JWT authentication, Role-Based Access Control (Admin vs. User), dynamic filtering with pagination, and interactive OpenAPI (Swagger) documentation — the core pieces of a real-world backend service.
 
@@ -19,13 +19,13 @@ The API implements stateless JWT authentication, Role-Based Access Control (Admi
 
 ## Tech Stack & Architecture
 
-| Layer             | Technology                                        |
-|:------------------|:--------------------------------------------------|
-| Language          | Java 17                                           |
-| Framework         | Spring Boot 3, Spring Security 6, Spring Data JPA |
-| Database          | MySQL 8.0                                         |
-| API Documentation | Springdoc OpenAPI 3 / Swagger UI                  |
-| Containerization  | Docker (multi-stage build), Docker Compose        |
+| Layer             | Technology                                            |
+|:------------------|:------------------------------------------------------|
+| Language          | Java 17                                               |
+| Framework         | Spring Boot 4.0.5, Spring Security 6, Spring Data JPA |
+| Database          | MySQL 8.0                                             |
+| API Documentation | Springdoc OpenAPI 3 / Swagger UI                      |
+| Containerization  | Docker (multi-stage build), Docker Compose            |
 
 ---
 
@@ -39,7 +39,7 @@ The application uses externalized configuration. Copy `.env.example` to `.env` a
 | `DB_URL`              | JDBC connection URL                       | `jdbc:mysql://mysqldb:3306/studentdb` |
 | `DB_USERNAME`         | Database username                         | `root`                                |
 | `DB_PASSWORD`         | Database password                         | Injected via `MYSQL_ROOT_PASSWORD`    |
-| `JWT_SECRET`          | 256-bit secret key for HMAC token signing | Pre-configured hex key                |
+| `JWT_SECRET`          | 256-bit secret key for HMAC token signing | Required in `.env`                |
 | `JWT_EXPIRATION`      | Token validity period (ms)                | `86400000` (24 hours)                 |
 
 ---
