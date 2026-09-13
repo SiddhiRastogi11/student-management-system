@@ -45,19 +45,16 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // 1. Unconditionally permit auth, error, and docs across all HTTP methods
+                        // Public endpoints across all methods
                         .requestMatchers("/api/auth/**", "/error").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
 
-                        // 2. Read operations: Accessible by USER and ADMIN
-                        .requestMatchers(HttpMethod.GET, "/students/**", "/departments/**").hasAnyRole("USER", "ADMIN")
+                        // Role-based access for CRUD
+                        .requestMatchers(HttpMethod.GET, "/students/**", "/departments/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/students/**", "/departments/**").hasAnyAuthority("ROLE_ADMIN", "ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/students/**", "/departments/**").hasAnyAuthority("ROLE_ADMIN", "ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/students/**", "/departments/**").hasAnyAuthority("ROLE_ADMIN", "ADMIN")
 
-                        // 3. Mutating operations: Strictly ADMIN only
-                        .requestMatchers(HttpMethod.POST, "/students/**", "/departments/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/students/**", "/departments/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/students/**", "/departments/**").hasRole("ADMIN")
-
-                        // 4. Any other request must be authenticated
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
